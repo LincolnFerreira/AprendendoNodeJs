@@ -8,10 +8,10 @@ http.createServer((req, res) => {
 
     const file = req.url === '/' ? 'index.html' : req.url;
     const filePath = path.join(__dirname, 'public', file);
-    const extname = path.extname(filePath)
+    const extname = path.extname(filePath);
 
     const allowedFileTypes = ['html', '.css', '.js']
-    const allowed = allowedFileTypes.find((item) == extname)
+    const allowed = allowedFileTypes.find((item) == extname);
 
     if(!allowed) return
     fs.readFile(
