@@ -1,9 +1,19 @@
 const http = require('http');
+const fs = require('fs');
+const express = require('express');
+const app = express();
 
-http.createServer((req,res) => {
-    res.writeHead(200,{
-        'Content-Type' : 'text/plain'
+server = http.createServer((req, res) => {
+    res.writeHead(200, {
+        "Content-Type": 'text/html',
     });
-    res.write('CURSO');
-    res.end();
-}).listen(3000, console.log('servidor rodando com a PORTA 3000'));
+    if (req.url === '/') {
+        fs.readFile('public/index.html', (err, arquivo) => {
+            res.write(arquivo);
+            res.end();
+        });
+
+    } 
+    
+
+}).listen(3204, console.log('SERVIDOR CONFIGURADO NA PORTA 3204'));
